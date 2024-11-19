@@ -1,0 +1,14 @@
+{
+  "contacts": [
+    {
+      "id": "8c1a0442-ef23-4078-a009-fe0458586080",
+      "name": "Node.js",
+      "email": "istiaq15-14390@diu.edu.bd"
+    },
+    {
+      "id": "bf501a35-26eb-42bb-99e7-a9eea1045b1f",
+      "name": "Hasan",
+      "email": "Hasan@gmail.com"
+    }
+  ]
+}
