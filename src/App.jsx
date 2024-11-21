@@ -7,6 +7,7 @@ import AddContact from './components/AddContact';
 import ContactList from './components/ContactList';
 import ContactDetails from './components/contactDitals';
 import api from './api/contacts';
+import EditContact from './components/EditContacts';
 
 function App() {
   const LOCAL_STORAGE_KEY="contacts";
@@ -63,6 +64,15 @@ function App() {
     });
     setContacts(newContact)
   }
+  const updatecontactHandler=async(contact)=>{
+      const response=await api.put(`/contacts/${contact.id}`,contact)
+      console.log(response)
+      const {id,name,email}=response.data;
+      setContacts(contacts.map(contact=>{
+        return contact.id===id?{...response.data}:contact;
+
+      }));
+  }
 
   // useEffect(()=>{
   //   localStorage.setItem(LOCAL_STORAGE_KEY,JSON.stringify(contacts))
@@ -77,6 +87,7 @@ function App() {
       <Routes>
           <Route path="/"  element={<ContactList contacts={contacts} getContactId={removeContactHandler}/>}/>
           <Route path="/add" element={<AddContact AddContactHandler={AddContactHandler}/>}/>
+          <Route path="/edit" element={<EditContact updatecontactHandler={updatecontactHandler}/>}/>
           <Route path="/contact/:id" element={<ContactDetails/>}/>
       </Routes>
      
